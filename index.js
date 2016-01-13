@@ -1,4 +1,4 @@
-module.exports = MediaSourceStream
+module.exports = MediaElementWrapper
 
 var inherits = require('inherits')
 var stream = require('stream')
@@ -7,9 +7,15 @@ var MediaSource = typeof window !== 'undefined' && window.MediaSource
 
 inherits(MediaSourceStream, stream.Writable)
 
-function MediaSourceStream (elem, opts) {
+function MediaElementWrapper (elem, opts) {
   var self = this
-  if (!(self instanceof MediaSourceStream)) return new MediaSourceStream(elem, opts)
+  if (!(self instanceof MediaElementWrapper)) return new MediaElementWrapper(elem, opts)
+
+
+
+}
+
+function MediaSourceStream (opts)
   stream.Writable.call(self, opts)
 
   if (!MediaSource) throw new Error('web browser lacks MediaSource support')
